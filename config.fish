@@ -39,7 +39,7 @@ function parse_git_branch
 end
 
 function fish_prompt
-  if test -d .git
+  if test -d .git; or git rev-parse --git-dir > /dev/null 2>&1
     printf '%s➜  %s%s%s %s %s$ %s' (set_color green) (set_color $fish_color_cwd) (prompt_pwd) (set_color normal) (parse_git_branch) (set_color magenta) (set_color normal)
   else
     printf '%s➜  %s%s%s $ %s' (set_color green) (set_color $fish_color_cwd) (prompt_pwd) (set_color magenta) (set_color normal)
